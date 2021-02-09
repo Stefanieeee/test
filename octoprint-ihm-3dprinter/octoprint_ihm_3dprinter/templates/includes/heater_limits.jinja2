@@ -1,0 +1,109 @@
+<div class="row-fluid">
+
+    <div class="span4">
+        Temperature limits
+    </div>
+
+    <div class="span3">
+        <input class="input-block-level"
+               type="text"
+               data-bind=" enable: false">
+    </div>
+
+    <div class="span3">
+        <input class="input-block-level"
+               type="text"
+               data-bind="enable: false" >
+    </div>
+
+    <button class="span2 btn"
+            type="button"
+            data-bind="enable: false" >
+        <i class="icon-ok"></i>
+    </button>
+
+</div>
+
+<div class="row-fluid">
+
+    <div class="span4">
+        Power reflected limits
+    </div>
+
+    <div class="span3">
+        <input class="input-block-level"
+               type="text"
+               data-bind="enable: false">
+    </div>
+
+    <div class="span3">
+        <input class="input-block-level"
+               type="text"
+               data-bind="enable: false">
+    </div>
+
+    <button class="span2 btn"
+            type="button"
+            data-bind="enable: false">
+        <i class="icon-ok"></i>
+    </button>
+
+</div>
+
+<div class="row-fluid">
+
+    <div class="span4">
+        Power forward limits
+    </div>
+
+    <div class="span3">
+        <input class="input-block-level"
+               type="text"
+               data-bind="enable: false">
+    </div>
+
+    <div class="span3">
+        <input class="input-block-level"
+               type="text"
+               data-bind="enable: false">
+    </div>
+
+    <button class="span2 btn"
+            type="button"
+            data-bind="enable: false">
+        <i class="icon-ok"></i>
+    </button>
+
+</div>
+<!-- amplifier ontime settings -->
+
+<div class="row-fluid">
+
+    <div class="span4">
+        <i class="icon-exclamation-sign"
+           data-bind="visible: ontime.newMinimum() === null || ontime.newMaximum() === null">
+        </i>
+        <span class="add-on" data-bind="text: ontime.label"></span> limits
+        [<span class="add-on" data-bind="text: ontime.unit"></span>]
+    </div>
+
+    <div class="span3">
+        <input class="input-block-level"
+               type="text"
+               data-bind="value: ontime.newMinimum, enable: connection.available">
+    </div>
+
+    <div class="span3">
+        <input class="input-block-level"
+               type="text"
+               data-bind="value: ontime.newMaximum, enable: connection.available">
+    </div>
+
+    <button class="span2 btn"
+            type="button"
+            data-bind="click: ontime.setLimits, enable: connection.available">
+        <i class="icon-ok"></i>
+    </button>
+
+</div>
+<!-- end of amplifier ontime settings -->

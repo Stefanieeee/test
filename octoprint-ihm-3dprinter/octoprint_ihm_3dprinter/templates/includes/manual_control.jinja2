@@ -1,0 +1,40 @@
+<div id="manualControlMode" data-bind="visible: microwave_control.modeVisible() == `MANUAL`" >
+
+    <div class="row-fluid">
+
+        <div class="span6">
+            <div class="detail-plot-container">
+                <div class="detail-plot heaterTemperature"></div>
+            </div>
+        </div>
+
+        <div class="span6">
+            <div class="detail-plot-container">
+                <div class="detail-plot combinedPowerSensorChart"></div>
+            </div>
+        </div>
+
+    </div>
+
+    <br>
+
+    <div class="row-fluid">
+
+        <div class="span6">
+            <div class="detail-plot-container">
+                <div class="detail-plot" id="manual-power-chart"></div>
+            </div>
+        </div>
+
+        <div class="span6">
+            <div class="detail-plot-container">
+                <div class="detail-plot" id="manual-ontime-chart"></div>
+            </div>
+        </div>
+
+    </div>
+
+    <br>
+    {% include "includes/heater_parameters.jinja2" %}
+
+</div>

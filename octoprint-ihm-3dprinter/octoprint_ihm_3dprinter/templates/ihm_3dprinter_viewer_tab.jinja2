@@ -1,0 +1,52 @@
+<div id="argcode">
+    <canvas></canvas>
+</div>
+<br>
+<div id="argcode_controls">
+
+    <div class="row-fluid">
+        <button class="span4 btn btn-primary" type="button">Top view</button>
+    </div>
+    <br>
+
+    <div class="row-fluid">
+        <div class="span4">
+            Position (X, Y, Z) [mm]
+        </div>
+        <!-- ko with: toolPosition -->
+        <div class="span2">
+            <input disabled
+                   class="input-block-level"
+                   type="text"
+                   data-bind="value: x">
+        </div>
+        <div class="span2">
+            <input disabled
+                   class="input-block-level"
+                   type="text"
+                   data-bind="value: y">
+        </div>
+        <div class="span2">
+            <input disabled
+                   class="input-block-level"
+                   type="text"
+                   data-bind="value: z">
+        </div>
+        <!-- /ko -->
+    </div>
+
+    <div class="row-fluid">
+        <div class="span4">
+            Speed [mm/s]
+        </div>
+        <!-- ko with: toolPosition -->
+        <div class="span2">
+            <input disabled
+                   class="input-block-level"
+                   type="text"
+                   data-bind="value: feedrate">
+        </div>
+        <!-- /ko -->
+    </div>
+
+</div>

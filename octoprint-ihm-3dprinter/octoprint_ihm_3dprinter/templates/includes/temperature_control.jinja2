@@ -1,0 +1,98 @@
+<div class="row-fluid">
+
+    <div class="span12 detail-plot-container">
+          <div class="detail-plot combinedTemperatureChart"></div>
+    </div>
+
+</div>
+
+<br>
+
+<div class="row-fluid" id="heaterNozzleTemperatureControl">
+
+    <div class="span4">
+        Target temperature [<span class="add-on" data-bind="text: unit"></span>]
+    </div>
+
+    <div class="span2">
+        <input class="input-block-level"
+               type="text"
+               data-bind="value: newTarget, enable: available">
+    </div>
+
+    <button class="span1 btn"
+            type="button"
+            data-bind="click: setTarget.bind($data, -1), enable: available">
+        <i class="icon-minus"></i>
+    </button>
+
+    <div class="btn-group span4">
+        <button class="btn" data-bind="click: setTarget.bind($data, 0), enable: available">
+            <i class="icon-ok"> </i>
+            Filament Temp.
+        </button>
+        <button class="btn dropdown-toggle"
+                style="padding-right: 12px; padding-left: 12px"
+                data-toggle="dropdown"
+                data-bind="enable: available">
+            <span class="caret"></span>
+        </button>
+        <ul class="dropdown-menu">
+            <li data-bind="click: setPreset.bind($data, 180)"><a>Set to 180°C</a></li>
+            <li data-bind="click: setPreset.bind($data, 200)"><a>Set to 200°C</a></li>
+            <li data-bind="click: setPreset.bind($data, 220)"><a>Set to 220°C</a></li>
+            <li data-bind="click: setPreset.bind($data, 0)"><a>Cooldown (0°C)</a></li>
+        </ul>
+    </div>
+
+    <button class="span1 btn"
+            type="button"
+            data-bind="click: setTarget.bind($data, +1), enable: available">
+        <i class="icon-plus"></i>
+    </button>
+
+</div>
+
+<div class="row-fluid" id="bedTemperatureControl">
+
+    <div class="span4">
+        Bed temperature [°C]
+    </div>
+
+    <div class="span2">
+        <input class="input-block-level"
+               type="text"
+               data-bind="value: newBedTarget, enable: octoprint_control.isOperational">
+    </div>
+
+    <button class="span1 btn"
+            type="button"
+            data-bind="click: setBedTarget.bind($data, -1), enable: octoprint_control.isOperational">
+        <i class="icon-minus"></i>
+    </button>
+
+    <div class="btn-group span4">
+        <button class="btn"
+                data-bind="click: setBedTarget.bind($data, 0), enable: octoprint_control.isOperational">
+            <i class="icon-ok"> </i>
+            Bed Temp.
+        </button>
+        <button class="btn dropdown-toggle"
+                style="padding-right: 12px; padding-left: 12px"
+                data-toggle="dropdown"
+                data-bind="enable: octoprint_control.isOperational">
+            <span class="caret"></span>
+        </button>
+        <ul class="dropdown-menu">
+            <li data-bind="click: setBedPreset.bind($data, 50)"><a>Set to 50°C</a></li>
+            <li data-bind="click: setBedPreset.bind($data, 0)"><a>Cooldown (0°C)</a></li>
+        </ul>
+    </div>
+
+    <button class="span1 btn"
+            type="button"
+            data-bind="click: setBedTarget.bind($data, +1), enable: octoprint_control.isOperational">
+        <i class="icon-plus"></i>
+    </button>
+
+</div>

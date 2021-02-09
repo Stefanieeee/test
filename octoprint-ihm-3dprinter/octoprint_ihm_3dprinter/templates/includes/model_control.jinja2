@@ -1,0 +1,195 @@
+<div id="modelControlMode" data-bind="visible: microwave_control.modeVisible() == `MODEL`">
+
+    <!-- <div class="row-fluid">
+
+      <div class="span6">
+          <div class="detail-plot-container">
+              <div class="detail-plot" id="model-ontime-chart"></div>
+          </div>
+      </div>
+
+    </div> -->
+
+    <br>
+
+    <div class="row-fluid">
+
+        <div class="span6">
+            <div class="detail-plot-container">
+                <div class="detail-plot" id="model-power-chart"></div>
+            </div>
+        </div>
+
+        <div class="span6">
+            <div class="detail-plot-container">
+                <div class="detail-plot" id="model-filament-speed"></div>
+            </div>
+        </div>
+
+    </div>
+
+  <hr>
+
+  <div class="row-fluid">
+
+      <div class="span4">
+          <i class="icon-exclamation-sign" data-bind="visible: offset() === null"> </i>
+          <span class="add-on" data-bind="text: offsetName"></span>
+          [<span class="add-on" data-bind="text: offsetUnit"></span>]
+      </div>
+
+      <div class="span2">
+          <input disabled
+                 class="input-block-level"
+                 type="text"
+                 data-bind="value: offset">
+      </div>
+
+      <div class="span3">
+          <input class="input-block-level"
+                 type="text"
+                 data-bind="value: newOffset">
+      </div>
+
+      <button class="span1 btn offset1"
+              type="button"
+              data-bind="
+                click: setOffset.bind($data, newOffset()),
+                enable: microwave_control.mode() == `MODEL`">
+          <i class="icon-ok"></i>
+      </button>
+
+  </div>
+
+  <div class="row-fluid">
+
+      <div class="span4">
+          <i class="icon-exclamation-sign" data-bind="visible: coefficient() === null"> </i>
+          <span class="add-on" data-bind="text: coefficientName"></span>
+          [<span class="add-on" data-bind="text: coefficientUnit"></span>]
+      </div>
+
+      <div class="span2">
+          <input disabled
+                 class="input-block-level"
+                 type="text"
+                 data-bind="value: coefficient">
+      </div>
+
+      <div class="span3">
+          <input class="input-block-level"
+                 type="text"
+                 data-bind="value: newCoefficient">
+      </div>
+
+      <button class="span1 btn offset1"
+              type="button"
+              data-bind="
+                click: setCoefficient.bind($data, newCoefficient()),
+                enable: microwave_control.mode() == `MODEL`">
+          <i class="icon-ok"></i>
+      </button>
+
+  </div>
+  <!-- output power value -->
+  <div class="row-fluid">
+
+      <div class="span4">
+          <i class="icon-exclamation-sign" data-bind="visible: power.newValue() === null"> </i>
+          <span class="add-on" data-bind="text: power.label"></span>
+          [<span class="add-on" data-bind="text: power.unit"></span>]
+      </div>
+
+      <div class="span2">
+          <input disabled
+                 class="input-block-level"
+                 type="text"
+                 data-bind="value: power.value">
+      </div>
+
+      <div class="span3">
+          <input class="input-block-level"
+                 type="text"
+                 data-bind="value: power.newValue">
+      </div>
+
+      <button class="span1 btn"
+              type="button"
+              data-bind="click:
+                power.setPower.bind($data, -1),
+                enable: microwave_control.mode() == `MODEL` && heater.connection.available">
+          <i class="icon-minus"></i>
+      </button>
+
+      <button class="span1 btn"
+              type="button"
+              data-bind="click:
+                power.setPower.bind($data, 0),
+                enable: microwave_control.mode() == `MODEL` && heater.connection.available">
+          <i class="icon-ok"></i>
+      </button>
+
+      <button class="span1 btn"
+              type="button"
+              data-bind="
+                click: power.setPower.bind($data, 1),
+                enable: microwave_control.mode() == `MODEL` && heater.connection.available">
+          <i class="icon-plus"></i>
+      </button>
+
+  </div>
+
+    <div class="row-fluid">
+
+        <div class="span4">
+            <i class="icon-exclamation-sign" data-bind="visible: sensor() === null"> </i>
+            Speed sensor
+        </div>
+
+        <button class="span4 btn"
+                data-bind="
+                  click: setSensor.bind($data, 0),
+                  enable: microwave_control.mode() == `MODEL` && heater.connection.available,
+                  css: {'btn-primary active': sensor() == `GCODE`}"
+                type="button">
+            GCODE
+        </button>
+
+        <button class="span4 btn"
+                data-bind="
+                  click: setSensor.bind($data, 1),
+                  enable: microwave_control.mode() == `MODEL` && heater.connection.available,
+                  css: {'btn-primary active': sensor() == `EXTERNAL1`}"
+                type="button">
+            External 1
+        </button>
+
+    </div>
+
+  <!-- output power step value -->
+  <div class="row-fluid" hidden>
+
+      <div class="span4">
+          <i class="icon-exclamation-sign" data-bind="visible: power.step.newValue() === null"></i>
+          <span class="add-on" data-bind="text: power.step.label"></span>
+          [<span class="add-on" data-bind="text: power.step.unit"></span>]
+      </div>
+
+      <div class="span5">
+          <input class="input-block-level"
+                 type="text"
+                 data-bind="value: power.step.newValue">
+      </div>
+
+      <button class="span1 offset1 btn"
+              type="button"
+              data-bind="
+                click: power.step.setStep,
+                enable: microwave_control.mode() == `MODEL` && heater.connection.available">
+          <i class="icon-ok"></i>
+      </button>
+
+  </div>
+  <!-- end output power step value -->
+
+</div>

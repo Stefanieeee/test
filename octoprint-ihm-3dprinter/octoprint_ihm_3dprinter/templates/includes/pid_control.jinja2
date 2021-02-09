@@ -1,0 +1,136 @@
+
+<div id="pidControlMode" data-bind="visible: microwave_control.modeVisible() == `PID`">
+
+    <!-- <div class="row-fluid">
+
+        <div class="span6">
+            <div class="detail-plot-container">
+                <div class="detail-plot" id="pid-ontime-chart"></div>
+            </div>
+        </div>
+
+    </div> -->
+
+    <br>
+
+    <div class="row-fluid">
+
+        <div class="span6">
+            <div class="detail-plot-container">
+                <div class="detail-plot" id="pid-power-chart"></div>
+            </div>
+        </div>
+
+        <div class="span6">
+            <div class="detail-plot-container">
+                <div class="detail-plot pidControlChart"></div>
+            </div>
+        </div>
+
+    </div>
+
+    <hr>
+
+    <div class="row-fluid">
+        <div class="span4">
+            <span class="add-on" data-bind="text: pid.label"></span>
+        </div>
+
+        <div class="span1">
+            <input disabled
+                   class="input-block-level"
+                   type="text"
+                   data-bind="value: pid.P">
+        </div>
+
+        <div class="span1">
+            <input disabled
+                   class="input-block-level"
+                   type="text"
+                   data-bind="value: pid.I">
+        </div>
+
+        <div class="span1">
+            <input disabled
+                   class="input-block-level"
+                   type="text"
+                   data-bind="value: pid.D">
+        </div>
+
+        <div class="span1">
+            <input class="input-block-level"
+                   type="text"
+                   data-bind="value: pid.newP">
+        </div>
+
+        <div class="span1">
+            <input class="input-block-level"
+                   type="text"
+                   data-bind="value: pid.newI">
+        </div>
+
+        <div class="span1">
+            <input class="input-block-level"
+                   type="text"
+                   data-bind="value: pid.newD">
+        </div>
+
+        <button class="span1 btn"
+                type="button"
+                data-bind="
+                  click: pid.setPID,
+                  enable: microwave_control.mode() == `PID` && status.connection.available">
+            <i class="icon-ok"></i>
+        </button>
+
+    </div>
+
+    <div class="row-fluid">
+
+        <div class="span4">
+            <i class="icon-exclamation-sign" data-bind="visible: power.newValue() === null"> </i>
+            <span class="add-on" data-bind="text: power.label"></span>
+            [<span class="add-on" data-bind="text: power.unit"></span>]
+        </div>
+
+
+        <div class="span2">
+            <input disabled
+                   class="input-block-level"
+                   type="text"
+                   data-bind=" value: power.value">
+        </div>
+
+        <div class="span3">
+            <input class="input-block-level"
+                   type="text"
+                   data-bind=" value: power.newValue">
+        </div>
+
+        <button class="span1 btn"
+                type="button"
+                data-bind="
+                  click: power.setPower.bind($data, -1),
+                  enable: microwave_control.mode() == `PID` && status.connection.available">
+            <i class="icon-minus"></i>
+        </button>
+
+        <button class="span1 btn"
+                type="button"
+                data-bind="
+                  click: power.setPower.bind($data, 0),
+                  enable: microwave_control.mode() == `PID` && status.connection.available">
+            <i class="icon-ok"></i>
+        </button>
+
+        <button class="span1 btn"
+                type="button"
+                data-bind="
+                  click: power.setPower.bind($data, 1),
+                  enable: microwave_control.mode() == `PID` && status.connection.available">
+            <i class="icon-plus"></i>
+        </button>
+
+    </div>
+
+</div>

@@ -1,0 +1,48 @@
+<div class="pluginViewContainer amplifierContainer" id="amplifierConnection" hidden>
+
+    <h3>Microwave amplifier connection</h3>
+
+    <div id="heaterStatusControl">
+        <!-- connection settings for the amplifier -->
+
+        <div class="row-fluid" data-bind="with: connection">
+
+            <div class="control-group"
+                 data-bind="css: {'error': !available() || !newConnectionValid()}">
+
+                <div class="span4">
+                    <i class="icon-exclamation-sign"
+                       data-bind="visible: !available() || !newConnectionValid()"> </i>
+                    <span data-bind="text: label"></span>
+                </div>
+
+                <div class="span3">
+                    <input class="input-block-level"
+                           type="text"
+                           data-bind="value: newHost">
+                </div>
+
+                <div class="span3">
+                    <input class="input-block-level"
+                           type="text"
+                           data-bind="value: newPort">
+                </div>
+
+                <button class="span2 btn btn-primary"
+                        type="button"
+                        data-bind="click: setConnection">
+                    <i class="icon-wrench"></i>
+                </button>
+
+          </div>
+
+      </div>
+      <!-- end of amplifier connection settings -->
+
+      <hr>
+
+      {% include "includes/heater_limits.jinja2" %}
+
+    </div>
+
+</div>

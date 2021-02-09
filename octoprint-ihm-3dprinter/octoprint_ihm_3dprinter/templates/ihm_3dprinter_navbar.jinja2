@@ -1,0 +1,19 @@
+<div class="navbar-text">
+
+    <!-- ko if: mcs.heater.connection.available -->
+
+        <!-- ko foreach: items -->
+
+            <span data-bind="text: label"></span>: <strong><span data-bind="text: value"></span> [<span data-bind="text: unit"></span>]</strong> |
+
+        <!-- /ko -->
+
+    <!-- /ko -->
+
+    <!-- ko ifnot: mcs.heater.connection.available -->
+
+        <span>Microwave amplifier not available</span>
+
+    <!-- /ko -->
+
+</div>

@@ -1,0 +1,83 @@
+<div class="pluginViewContainer overviewContainer">
+    {% include "includes/temperature_control.jinja2" %}
+    <br>
+
+    <div class="row-fluid" id="microwaveSelectControlMode">
+
+        <div class="span2">
+            <i class="icon-exclamation-sign" data-bind="visible: mode() === null"> </i>
+            Mode
+        </div>
+
+        <div class="span3">
+            <div class="btn-group">
+                <button class="btn"
+                        type="button"
+                        data-bind="
+                          css: {'active': modeVisible() == `MANUAL`},
+                          click: modeVisible.bind($data, `MANUAL`)">
+                    Manual
+                </button>
+                <button type="button"
+                        class="btn"
+                        data-bind="
+                          css: {'btn-primary active': mode() == `MANUAL`},
+                          click: setMode.bind($data, `MANUAL`)">
+                    <i class="icon-off"></i>
+                </button>
+            </div>
+        </div>
+
+        <div class="span3">
+            <div class="btn-group">
+              <button class="btn"
+                      type="button"
+                      data-bind="
+                        css: {'active': modeVisible() == `MODEL`},
+                        click: modeVisible.bind($data, `MODEL`)">
+                    Model
+                </button>
+                <button type="button"
+                        class="btn"
+                        data-bind="
+                          css: {'btn-primary active': mode() == `MODEL`},
+                          click: setMode.bind($data, `MODEL`)">
+                    <i class="icon-off"></i>
+                </button>
+            </div>
+        </div>
+
+        <div class="span2">
+            <div class="btn-group">
+              <button class="btn"
+                      type="button"
+                      data-bind="
+                        css: {'active': modeVisible() == `PID`},
+                        click: modeVisible.bind($data, `PID`)">
+                    PID
+                </button>
+                <button type="button"
+                        class="btn"
+                        data-bind="
+                          css: {'btn-primary active': mode() == `PID`},
+                          click: setMode.bind($data, `PID`)">
+                    <i class="icon-off"></i>
+                </button>
+            </div>
+        </div>
+
+        <div class="span2">
+            <button class="btn btn-block btn-danger"
+                    type="button"
+                    data-bind="enable: heater.connection.available, click: loadDefaults">
+                Defaults
+            </button>
+        </div>
+
+    </div>
+    <br>
+    {% include "includes/pid_control.jinja2" %}
+    {% include "includes/model_control.jinja2" %}
+    {% include "includes/manual_control.jinja2" %}
+
+</div>

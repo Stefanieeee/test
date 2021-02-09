@@ -1,0 +1,32 @@
+#python server
+import socket
+import time
+#IPV4(AF_INET),TCP协议(SOCK_STREAM)
+s= socket.socket(socket.AF_INET,socket.SOCK_STREAM)
+#绑定ip和端口，bind接受的是一个元组
+s.bind(('10.172.19.122',5025))
+#设置监听，其值阻塞队列长度，一共可以有5+1个客户端和服务器连接
+s.listen(5)
+
+a=[1,2,3,4]
+
+while True:
+
+    # 将发送数据转化为String
+    b=str(a)
+    # 等待客户请求
+    connection,address = s.accept()
+
+    # 打印客户端地址
+    print("client ip is:",address)
+    # 接收数据,并存入buf
+    buf = connection.recv(40960)
+    print(buf.decode('utf-8'))
+
+    # 发送数据
+    connection.send(bytes(b, encoding="utf-8"))
+    # 关闭连接
+    connection.close()
+    time.sleep(1)
+ # 关闭服务器
+sock.close()

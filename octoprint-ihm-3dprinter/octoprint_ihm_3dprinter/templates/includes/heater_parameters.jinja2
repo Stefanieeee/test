@@ -1,0 +1,207 @@
+<!-- amplifier frequency settings -->
+<div class="row-fluid">
+
+    <div class="span4">
+        <i class="icon-exclamation-sign" data-bind="visible: !frequency.newValueValid()"> </i>
+        <span data-bind="text: frequency.label"></span>
+        [<span data-bind="text: frequency.unit"></span>]
+    </div>
+
+    <div class="span2">
+        <input disabled
+              class="input-block-level"
+              type="text"
+              data-bind="value: frequency.value">
+    </div>
+
+    <div class="span3" data-bind="css: {'error': !frequency.newValueValid()}">
+        <input class="input-block-level"
+               type="text"
+               data-bind="value: frequency.newValue, enable: connection.available">
+    </div>
+
+    <button class="span1 btn offset1"
+            type="button"
+            data-bind="
+              click: frequency.setValue,
+              enable: microwave_control.mode() == `MANUAL` && connection.available">
+        <i class="icon-ok"></i>
+    </button>
+
+</div>
+<!-- end of amplifier frequency settings -->
+
+<div class="row-fluid">
+
+    <div class="span4">
+        <i class="icon-exclamation-sign" data-bind="visible: ontime.value() === null"> </i>
+        <span class="add-on" data-bind="text: ontime.label"></span>
+        [<span class="add-on" data-bind="text: ontime.unit"></span>]
+    </div>
+
+    <div class="span2">
+        <input disabled
+               class="input-block-level"
+               type="text"
+               data-bind="value: ontime.value" >
+    </div>
+
+    <div class="span3">
+        <input class="input-block-level"
+               type="text"
+               data-bind="value: ontime.newValue, enable: connection.available">
+    </div>
+
+    <button class="span1 offset1 btn"
+            type="button"
+            data-bind="
+              click: ontime.setOntime.bind($data, 0),
+              enable: microwave_control.mode() == `MANUAL` && connection.available">
+        <i class="icon-ok"></i>
+    </button>
+
+</div>
+
+<div class="row-fluid">
+
+    <div class="span4">
+        <i class="icon-exclamation-sign" data-bind="visible: offtime.value() === null"> </i>
+        <span class="add-on" data-bind="text: offtime.label"></span>
+        [<span class="add-on" data-bind="text: offtime.unit"></span>]
+    </div>
+
+    <div class="span2">
+        <input disabled
+               class="input-block-level"
+               type="text"
+               data-bind="value: offtime.value">
+    </div>
+
+    <div class="span3">
+        <input class="input-block-level"
+               type="text"
+               data-bind="enable: false">
+    </div>
+
+    <button class="span1 offset1 btn"
+            type="button"
+            data-bind="
+              click: offtime.setOfftime.bind($data, 0),
+              enable: false">
+        <i class="icon-ok"></i>
+    </button>
+
+</div>
+<!-- end of amplifier offtime settings -->
+
+<!-- amplifier power settings -->
+<!-- output power value -->
+<div class="row-fluid">
+
+    <div class="span4">
+        <i class="icon-exclamation-sign" data-bind="visible: power.newValue() === null"> </i>
+        <span class="add-on" data-bind="text: power.label"></span>
+        [<span class="add-on" data-bind="text: power.unit"></span>]
+    </div>
+
+    <div class="span2">
+        <input disabled
+               class="input-block-level"
+               type="text"
+               data-bind="value: power.value">
+    </div>
+
+    <div class="span3">
+        <input class="input-block-level"
+               type="text"
+               data-bind=" value: power.newValue, enable: connection.available">
+    </div>
+
+    <button class="span1 btn"
+            type="button"
+            data-bind="
+              click: power.setPower.bind($data, -1),
+              enable: microwave_control.mode() == `MANUAL` && connection.available">
+        <i class="icon-minus"></i>
+    </button>
+
+    <button class="span1 btn"
+            type="button"
+            data-bind="
+              click: power.setPower.bind($data, 0),
+              enable: microwave_control.mode() == `MANUAL` && connection.available">
+        <i class="icon-ok"></i>
+    </button>
+
+    <button class="span1 btn"
+            type="button"
+            data-bind="
+              click: power.setPower.bind($data, 1),
+              microwave_control.mode() == `MANUAL` && enable: connection.available">
+        <i class="icon-plus"></i>
+    </button>
+
+</div>
+<!-- end of output power value -->
+<!-- output power step value -->
+<div class="row-fluid">
+
+    <div class="span4">
+        <i class="icon-exclamation-sign" data-bind="visible: power.step.newValue() === null"> </i>
+        <span class="add-on" data-bind="text: power.step.label"></span>
+        [<span class="add-on" data-bind="text: power.step.unit"></span>]
+    </div>
+
+    <div class="span2">
+        <input disabled
+               class="input-block-level"
+               type="text"
+               data-bind="value: power.step.value">
+    </div>
+
+    <div class="span3">
+        <input class="input-block-level"
+               type="text"
+               data-bind="
+                value: power.step.newValue,
+                enable: microwave_control.mode() == `MANUAL` && connection.available">
+    </div>
+
+    <button class="span1 offset1 btn"
+            type="button"
+            data-bind="
+              click: power.step.setStep,
+              enable: microwave_control.mode() == `MANUAL` && connection.available">
+        <i class="icon-ok"></i>
+    </button>
+
+</div>
+
+<!-- toggle buttons for the differen amplifier modes -->
+<div class="row-fluid">
+
+    <div class="span4">
+        <i class="icon-exclamation-sign" data-bind="visible: mode() === null"> </i>
+        Mode
+    </div>
+
+    <button class="span4 btn"
+            data-bind="
+              click: setMode.bind($data, 'PWM'),
+              enable: microwave_control.mode() == `MANUAL` && connection.available,
+              css: {'btn-primary active': mode() == `PWM`}"
+            type="button">
+        PWM
+    </button>
+
+    <button class="span4 btn"
+            data-bind="
+              click: setMode.bind($data, 'CW'),
+              enable: microwave_control.mode() == `MANUAL` && connection.available,
+              css: {'btn-primary active': mode() == `CW`}"
+            type="button">
+        CW
+    </button>
+
+</div>
+<!-- End of section for amplifier modes -->

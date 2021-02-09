@@ -1,0 +1,42 @@
+<div class="row-fluid" id="pluginViewSelector">
+
+    <button class="btn span2"
+            data-bind="click: show.bind($data, '.overviewContainer')">
+        Overview
+    </button>
+
+    <button class="btn span2"
+            data-bind="click: show.bind($data, '.amplifierContainer')">
+        Amplifier
+    </button>
+
+    <button class="btn span2"
+            data-bind="click: show.bind($data, '.dataloggerContainer')">
+        Datalogger
+    </button>
+
+    <button class="btn span2"
+            data-bind="click: show.bind($data, '.sensorsContainer')">
+        Sensors
+    </button>
+
+    <button class="btn span2"
+            data-bind="click: show.bind($data, '.logContainer')">
+        Log
+    </button>
+
+</div>
+
+<br>
+{% include "includes/heater_monitor.jinja2" %}
+<br>
+
+<div class="pluginViewContainer printerNotConnectedContainer alert alert-error" hidden>
+  <h1>Printer not connected!</h1>
+</div>
+
+{% include "includes/overview.jinja2" %}
+{% include "includes/datalogger.jinja2" %}
+{% include "includes/logreader.jinja2" %}
+{% include "includes/heater_status.jinja2" %}
+{% include "includes/sensors.jinja2" %}

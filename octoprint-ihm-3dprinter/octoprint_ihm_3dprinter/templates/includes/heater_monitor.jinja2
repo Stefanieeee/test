@@ -1,0 +1,49 @@
+<div hidden id="microwaveStatus">
+
+    <div class="row-fluid">
+
+        <div class="span4">
+            <button class="btn btn-block"
+                    data-bind="
+                      click: heater.setActive.bind($data, 1),
+                      enable: ready,
+                      css: { 'btn-success active': heater.active }"
+                    type="button">
+                <i class="icon-play icon-white"> </i>
+                MCS ON
+            </button>
+        </div>
+
+        <div class="span4">
+            <button class="btn btn-block"
+                    data-bind="
+                      click: heater.setActive.bind($data, 0),
+                      enable: ready,
+                      css: { 'active': !heater.active(), 'btn-inverse': heater.active }"
+                    type="button">
+                <i class="icon-pause icon-white"> </i>
+                MCS OFF
+          </button>
+        </div>
+
+        <div class="span2">
+            <button class="btn btn-block btn-danger"
+                    type="button"
+                    data-bind="click: emergencyStop">
+                <i class="icon-fire icon-white"> </i>
+                STOP
+            </button>
+        </div>
+
+        <div class="span2">
+            <button class="btn btn-block"
+                    type="button"
+                    data-bind="click: homeAll">
+                <i class="icon-home icon-white"> </i>
+                Home
+            </button>
+        </div>
+
+    </div>
+
+</div>
