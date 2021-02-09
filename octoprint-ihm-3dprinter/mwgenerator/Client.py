@@ -77,8 +77,8 @@ class Client(object):
 
         return {
             'connection': {
-                'host': '192.168.0.111',
-                'port': 5025,
+                'host': '169.254.8.176',
+                'port': 8090,
                 'delay': 0.01
             },
             'mode': 'PWM',
